@@ -7,7 +7,7 @@
           <h4>Register</h4>
         </div>
         <div class="card-body">
-          <form [formGroup]="signupForm">
+          <form [formGroup]="signupForm" (ngSubmit)="signup()">
             <div class="form-group row">
               <label
                 for="email_address"
@@ -20,9 +20,9 @@
                   id="email_address"
                   class="form-control"
                   name="email-address"
+                  [formControlName]="'email'"
                   required
                   autofocus
-                  [formControlName]="'email'"
                 />
                 <span
                   *ngIf="
