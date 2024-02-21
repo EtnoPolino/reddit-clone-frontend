@@ -1,56 +1,31 @@
-<div class="register-section">
+<div class="login-section">
   <div class="row justify-content-center">
     <div class="col-md-3"></div>
     <div class="col-md-6">
       <div class="card">
-        <div class="card-header" style="text-align: center">
-          <h4>Register</h4>
-        </div>
+        <div class="card-header" style="text-align: center"><h4>Login</h4></div>
         <div class="card-body">
-          <form [formGroup]="signupForm" (ngSubmit)="signup()">
+          <form [formGroup]="loginForm" (ngSubmit)="login()">
             <div class="form-group row">
               <label
-                for="email_address"
+                for="user_name"
                 class="col-md-4 col-form-label text-md-right"
-                >E-Mail Address</label
+                >Username</label
               >
               <div class="col-md-6">
                 <input
                   type="text"
-                  id="email_address"
+                  id="user_name"
                   class="form-control"
-                  name="email-address"
-                  [formControlName]="'email'"
-                  required
-                  autofocus
-                />
-                <span
-                  *ngIf="
-                    !signupForm.get('email')!.valid &&
-                    signupForm.get('email')!.touched
-                  "
-                >
-                  Please provide a valid email
-                </span>
-              </div>
-            </div>
-
-            <div class="form-group row">
-              <label class="col-md-4 col-form-label text-md-right"
-                >User Name</label
-              >
-              <div class="col-md-6">
-                <input
-                  type="text"
-                  class="form-control"
+                  name="user_name"
                   [formControlName]="'username'"
                   required
                   autofocus
                 />
                 <span
                   *ngIf="
-                    !signupForm.get('username')!.valid &&
-                    signupForm.get('username')!.touched
+                    !loginForm.get('username')!.valid &&
+                    loginForm.get('username')!.touched
                   "
                 >
                   Please provide a valid username
@@ -75,21 +50,26 @@
                 />
                 <span
                   *ngIf="
-                    !signupForm.get('password')!.valid &&
-                    signupForm.get('password')!.touched
+                    !loginForm.get('password')!.valid &&
+                    loginForm.get('password')!.touched
                   "
                 >
-                  Please provide a valid password
+                  Password can not be empty
                 </span>
               </div>
             </div>
 
             <span class="col-md-6 offset-md-4">
-              <button type="submit" class="sign-up">Sign Up</button>
+              <button type="submit" class="login">Login</button>
               <span style="padding-left: 15px"
-                >Existing user? <a routerLink="/login">Log In</a></span
+                >New to SpringReddit ? <a routerLink="/signup">SIGN UP</a></span
               >
             </span>
+            <div class="login-failed">
+              <p class="login-failed-text">
+                Login Failed. Please check your credentials and try again.
+              </p>
+            </div>
           </form>
         </div>
       </div>

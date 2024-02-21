@@ -7,9 +7,10 @@ import { HeaderComponent } from './header/header.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './auth/login/login.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, SignupComponent],
+  declarations: [AppComponent, HeaderComponent, SignupComponent, LoginComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
