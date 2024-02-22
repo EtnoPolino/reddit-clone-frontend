@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { LoginRequestPayload } from './login-request.payload';
+import { AuthService } from '../shared/auth.service';
+import { throwError } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -10,8 +12,14 @@ import { LoginRequestPayload } from './login-request.payload';
 export class LoginComponent implements OnInit {
   loginRequestPayload!: LoginRequestPayload;
   loginForm!: FormGroup;
+  isError: boolean | undefined;
 
-  constructor() {}
+  constructor(private authService: AuthService) {
+    this.loginRequestPayload = {
+      username: '',
+      password: '',
+    };
+  }
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
@@ -21,6 +29,26 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    console.log('marche');
+    this.loginRequestPayload.username = this.loginForm.get('username')?.value;
+    this.loginRequestPayload.password = this.loginForm.get('password')?.value;
+
+    // this.authService.login(this.loginRequestPayload).subscribe(() => {
+    //   this.isError = false;
+    //   console.log('login successfull');
+    // }, error => {
+    //   this.isError = true;
+    //   throw(error);
+    // });
+
+    this.authService.login(this.loginRequestPayload).subscribe({
+      next: () => {
+        this.isError = false;
+        console.log('login successfull');
+      },
+      error: (error) => {
+        this.isError = true;
+        throwError(() => error);
+      },
+    });
   }
 }
