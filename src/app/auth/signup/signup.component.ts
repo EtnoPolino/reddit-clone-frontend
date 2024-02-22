@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SignupRequestPayload } from './Signup-request.payload';
 import { AuthService } from '../shared/auth.service';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-signup',
@@ -13,7 +15,11 @@ export class SignupComponent implements OnInit {
 
   signupForm!: FormGroup; // la property called signupForm with type FormGroup | undefined. It starts with a value of undefined.
 
-  constructor(private authService: AuthService) {
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private toastr: ToastrService
+  ) {
     this.signupRequestPayload = {
       username: '',
       email: '',
