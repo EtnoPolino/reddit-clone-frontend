@@ -65,9 +65,18 @@
                 >New to SpringReddit ? <a routerLink="/signup">SIGN UP</a></span
               >
             </span>
-            <div class="login-failed" *ngIf="this.isError">
+            <div class="login-failed" *ngIf="this.isError === true">
               <p class="login-failed-text">
                 Login Failed. Please check your credentials and try again.
+              </p>
+            </div>
+            <div
+              class="login-failed"
+              [ngStyle]="{ 'background-color': 'green' }"
+              *ngIf="this.isError === false"
+            >
+              <p class="register-success-text">
+                {{ registerSuccessMessage }}
               </p>
             </div>
           </form>
