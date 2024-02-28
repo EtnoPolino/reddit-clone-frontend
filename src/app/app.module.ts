@@ -13,6 +13,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './home/home.component';
 import { TokenInterceptorService } from './token-interceptor.service';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { TokenInterceptorService } from './token-interceptor.service';
     NgxWebstorageModule.forRoot(),
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
+    FontAwesomeModule,
   ],
   providers: [
     {
