@@ -27,9 +27,9 @@ import { VoteButtonComponent } from './shared/vote-button/vote-button.component'
     LoginComponent,
     HomeComponent,
     PostTileComponent,
+    VoteButtonComponent,
     SideBarComponent,
     SubredditSideBarComponent,
-    VoteButtonComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-
+import { PostModel } from '../shared/post-model';
+import { PostService } from '../shared/post.service';
 
 @Component({
   selector: 'app-home',
@@ -7,10 +9,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  
+  posts: Array<PostModel> = [];
 
-  
-  constructor() {}
+  constructor(private postService: PostService) {
+    this.postService.getAllPost().subscribe((post) => {
+      this.posts = post;
+    });
+  }
 
   ngOnInit(): void {}
 }
