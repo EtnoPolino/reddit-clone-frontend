@@ -1,0 +1,84 @@
+<div class="container">
+  <div class="row">
+    <hr />
+    <div class="create-post-container col-md-9">
+      <form
+        class="post-form"
+        [formGroup]="createPostForm"
+        (ngSubmit)="createPost()"
+      >
+        <div class="form-group">
+          <div class="create-post-heading">Create Post</div>
+          <hr />
+          <input
+            type="text"
+            [formControlName]="'postName'"
+            class="form-control"
+            style="margin-top: 5px"
+            placeholder="Title"
+          />
+
+          <input
+            type="text"
+            class="form-control"
+            [formControlName]="'url'"
+            style="margin-top: 5px"
+            placeholder="URL"
+          />
+
+          <select
+            class="form-control"
+            style="margin-top: 10px"
+            [formControlName]="'subredditName'"
+          >
+            <option value="" selected disabled>Select Subreddit</option>
+            <option *ngFor="let subreddit of subreddits">
+              {{ subreddit.name }}
+            </option>
+          </select>
+
+          <!-- <editor
+            [formControlName]="'description'"
+            [init]="{
+              height: 500,
+              menubar: false,
+              plugins: [
+                'advlist autolink lists link image charmap print preview anchor',
+                'searchreplace visualblocks code fullscreen',
+                'insertdatetime media table paste code help wordcount'
+              ],
+              toolbar:
+                'undo redo | formatselect | bold italic backcolor | \
+                          alignleft aligncenter alignright alignjustify | \
+                          bullist numlist outdent indent | removeformat | help'
+            }"
+          ></editor> -->
+
+          <editor
+            [formControlName]="'description'"
+            apiKey="q0j27w0zxg52bjbxkjrc02xuajb6yfjderghc58kbpvv1xiy"
+            [init]="{
+                height: 500,
+                menubar: false,
+                plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage advtemplate ai mentions tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss',
+                toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+            }"
+          ></editor>
+
+          <span>
+            <div style="margin-top: 5px" class="float-right">
+              <button (click)="discardPost()" class="btnDiscard">
+                Discard
+              </button>
+              <button type="submit" class="btnCreatePost">Post</button>
+            </div>
+          </span>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-3">
+      <!-- <guidelines></guidelines>
+      <about></about> -->
+    </div>
+  </div>
+</div>

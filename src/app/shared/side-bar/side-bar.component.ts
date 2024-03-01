@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-side-bar',
@@ -6,6 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./side-bar.component.css'],
 })
 export class SideBarComponent implements OnInit {
-  constructor() {}
+  constructor(private router: Router) {}
   ngOnInit(): void {}
+
+  goToCreateSubreddit() {
+    this.router.navigateByUrl('/create-subreddit');
+  }
+  goToCreatePost() {
+    this.router.navigateByUrl('/create-post');
+  }
 }

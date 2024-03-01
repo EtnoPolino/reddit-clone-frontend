@@ -1,4 +1,3 @@
-<!-- ----------------------------------------------------------------------------- -->
 <div class="row post" *ngFor="let post of posts$">
   <div class="col-md-1">
     <app-vote-button [post]="post"></app-vote-button>
@@ -21,7 +20,7 @@
       <a class="postname" href="{{ post.url }}">{{ post.postName }}</a>
     </div>
     <div>
-      <p class="post-text">{{ post.description }}</p>
+      <p class="post-text" [innerHtml]="post.description"></p>
     </div>
     <hr />
     <span>
