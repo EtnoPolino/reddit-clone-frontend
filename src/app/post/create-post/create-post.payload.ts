@@ -1,6 +1,6 @@
-export interface CreatePostPayload {
-  postName: string;
+export class CreatePostPayload {
+  postName!: string;
   subredditName?: string;
   url?: string;
-  description: string;
+  description!: string;
 }

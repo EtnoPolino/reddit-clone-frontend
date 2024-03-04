@@ -1,6 +1,6 @@
-export interface SubredditModel {
+export class SubredditModel {
   id?: number;
-  name: string;
-  description: string;
+  name!: string;
+  description!: string;
   numberOfPosts?: number;
 }

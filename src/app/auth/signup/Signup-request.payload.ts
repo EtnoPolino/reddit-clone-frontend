@@ -1,5 +1,5 @@
-export interface SignupRequestPayload {
-  username: string;
-  email: string;
-  password: string;
+export class SignupRequestPayload {
+  username!: string;
+  email!: string;
+  password!: string;
 }
