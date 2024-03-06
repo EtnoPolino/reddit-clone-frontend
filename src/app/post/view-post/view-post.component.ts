@@ -6,6 +6,7 @@ import { PostModel } from 'src/app/shared/post-model';
 import { PostService } from 'src/app/shared/post.service';
 import { CommentPayload } from './comments.payload';
 import { CommentService } from 'src/app/comment/comment.service';
+import { LocalStorageService } from 'ngx-webstorage';
 
 @Component({
   selector: 'app-view-post',
@@ -22,7 +23,8 @@ export class ViewPostComponent implements OnInit {
   constructor(
     private postService: PostService,
     private activateRoute: ActivatedRoute,
-    private commentService: CommentService
+    private commentService: CommentService,
+    private localStorage: LocalStorageService
   ) {
     this.postId = this.activateRoute.snapshot.params['id'];
     this.commentForm = new FormGroup({
@@ -31,6 +33,7 @@ export class ViewPostComponent implements OnInit {
     this.commentPayLoad = {
       text: '',
       postId: this.postId,
+      username: this.getCurrentUsername(),
     };
   }
 
@@ -65,5 +68,9 @@ export class ViewPostComponent implements OnInit {
       },
       error: (error) => throwError(() => error),
     });
+  }
+
+  getCurrentUsername() {
+    return this.localStorage.retrieve('username');
   }
 }

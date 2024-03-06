@@ -28,4 +28,10 @@ export class PostService {
       'http://localhost:8080/api/posts/' + id
     );
   }
+
+  getAllPostByUsers(name: string): Observable<PostModel[]> {
+    return this.httpClient.get<PostModel[]>(
+      'http://localhost:8080/api/posts/' + name
+    );
+  }
 }
